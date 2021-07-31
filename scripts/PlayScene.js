@@ -103,7 +103,7 @@ class PlayScene extends Phaser.Scene
         let dead = this.enemies.filter(e => e.state == 'dead')
         if (dead.length > 1)
         {
-            dead[Phaser.Math.Between(0, (dead.length - 1))].spawn(Phaser.Math.Between(0, 100), Phaser.Math.Between(200, this.height-200));
+            dead[Phaser.Math.Between(0, (dead.length - 1))].spawn(Phaser.Math.Between(0, 100), Phaser.Math.Between(200, this.height-250));
         }
         else if (dead.length == 1)
         {
