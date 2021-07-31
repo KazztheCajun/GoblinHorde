@@ -191,7 +191,8 @@ class PlayScene extends Phaser.Scene
     {
         this.music.stop();
         let seconds = Math.floor((this.elapsedTime / 1000) % 60);
-        let minutes = Math.floor(this.elapsedTime / 6000);
+        let minutes = Math.floor(this.elapsedTime / 60000);
+    //    console.log([this.elapsedTime, minutes, seconds]);
         document.getElementById("kill-field").innerHTML = `${this.score}`;
         document.getElementById("time-field").innerHTML = `${minutes} minutes and ${seconds} seconds!`
         document.getElementById("backdrop").style.display = "block";
