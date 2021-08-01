@@ -75,7 +75,7 @@ class PlayScene extends Phaser.Scene
 
         // use event to spawn enemies from pool
         let event = new Object();
-        event.delay = Phaser.Math.Between(400, 800);
+        event.delay = Phaser.Math.Between(450, 900);
         event.callback = this.spawnEnemy;
         event.callbackScope = this;
         event.loop = true;

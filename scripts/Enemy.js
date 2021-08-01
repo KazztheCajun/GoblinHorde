@@ -31,7 +31,7 @@ class Enemy extends Entity
         this.y = y;
         this.hitbox.x = x;
         this.hitbox.y = y;
-        this.body.velocity.x = Phaser.Math.Between(120, 300);
+        this.body.velocity.x = Phaser.Math.Between(120, 250);
         this.play({key: 'goblin-walk', repeat:-1});
         this.setActive(true);
         this.setVisible(true);
