@@ -67,7 +67,7 @@ class PlayScene extends Phaser.Scene
 
     createObjectPool()
     {
-        while(this.enemies.length < 15)
+        while(this.enemies.length < 10)
         {
             let monster = new Enemy(this, 0, 0, "goblin");
             this.enemies.push(monster);
