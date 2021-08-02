@@ -36,35 +36,36 @@
     </head>
     <body class="bg-dark text-light">
         <div class="row">
-            <div class="text-center mx-auto my-5">
-                <h1>A Goblin horde is bearing down on the city from the west!</h1>
+            <div class="text-center mx-auto">
+                <h1>A Goblin horde from the west is bearing down on the city!</h1>
+                <img class="p-2" src="assets/common/FantasyWorld.gif" width="1984" height="1024">
                 <hr>
-                <h3>The king is enlisting people to help defend the evacuation. Do you have what it takes to keep them at bay while the citizens escape?</h3>
+                <h3>The king is enlisting people to help defend the evacuation. Do you have what it takes to keep the raid at bay while the citizens escape?</h3>
                 <hr>
                 <p> It's up to you to stop the goblins from crossing the bridge into the city!</p>
                 <label for="armor"> Select your armor:</label>
-                <form name="armorForm">
+                <form class="p-2" name="armorForm">
                     <select name="armor" id="armor" onchange="showArmor()">
                         <option value="0"></option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
-                        <option value="4">Option 4</option>
+                        <option value="1">Bucket</option>
+                        <option value="2">Goldie</option>
+                        <option value="3">The Grill</option>
+                        <option value="4">Chin Strap</option>
                     </select>
                 </form>
-                <div class="p-3">
+                <div class="pb-3">
                     <img name="armorImage" src="assets/players/none.png" width="84" height="135">
                 </div>
-                <a href="game.html"><input type="button" value="Take Up Arms!"></a>
+                <a class="p-2" href="game.html"><input type="button" value="Take Up Arms!"></a>
             </div>
-            <div class="text-center">
-            <p>Gameplay:</p>
-            <ul style="list-style-position: inside">
-                <li>Up/Down/Left/Right keys to move in the respective direction.</li>
-                <li>Space bar to stab with your spear. (hold for rapid stabbiness)</li>
-                <li>Getting hit by a Goblin will cost you 1 <i class="bi-suit-heart-fill"></i></li>
-                <li>Letting a Goblin past the bridge will also cost you 1 <i class="bi-suit-heart-fill"></i></li>
-            </ul>
+            <div class="text-center p-2">
+                <p>Gameplay:</p>
+                <ul style="list-style-position: inside">
+                    <li>Up/Down/Left/Right keys to move in the respective direction.</li>
+                    <li>Space bar to stab with your spear. (hold for rapid stabbiness)</li>
+                    <li>Getting hit by a Goblin will cost you 1 <i class="bi-suit-heart-fill"></i></li>
+                    <li>Letting a Goblin past the bridge will also cost you 1 <i class="bi-suit-heart-fill"></i></li>
+                </ul>
             </div>
         </div>
     </body>
