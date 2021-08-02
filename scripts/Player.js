@@ -1,6 +1,6 @@
 class Player extends Entity
 {
-    constructor(scene, x, y)
+    constructor(scene, skin, x, y)
     {
         super(scene, 2, 300, {x: x, y: y}, 'player');
         this.weapon = new Weapon(scene, x, y, this.scale); 
@@ -12,6 +12,15 @@ class Player extends Entity
         this.lives = 6;
         this.setCollideWorldBounds(true);
         this.hitBuffer = 90;
+        if (skin == 0 || skin == null)
+        {
+            this.skin = 1;
+        }
+        else
+        {
+            this.skin = skin;
+        }
+        this.animation = 'loaded';
     }
 
     update(time)
@@ -95,7 +104,7 @@ class Player extends Entity
             {
                 this.weapon.play({key: `polearm-${this.animation}`,repeat: -1});
             }
-            this.play({key: `player-${this.animation}`,repeat: -1});
+            this.play({key: `player${this.skin}-${this.animation}`,repeat: -1});
         }
         if (!wasAttacking && this.attacking)
         {
@@ -103,7 +112,7 @@ class Player extends Entity
         }
         if (wasAttacking && !this.attacking)
         {
-            this.play({key: `player-${this.animation}`,repeat: -1});
+            this.play({key: `player${this.skin}-${this.animation}`,repeat: -1});
             this.weapon.play({key: `polearm-${this.animation}`,repeat: -1});
         }
     }

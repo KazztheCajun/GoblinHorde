@@ -16,6 +16,22 @@
 
 	    <!-- Custom CSS -->
 	    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+        <script>
+            function showArmor()
+            {
+                let index = document.armorForm.armor.selectedIndex;
+                if (index != 0)
+                {
+                    document.armorImage.src = "assets/players/player" + (index) + ".gif";
+                }
+                else
+                {
+                    document.armorImage.src ="assets/players/none.png";
+                }
+                window.sessionStorage.setItem("playerSkin", index);
+            }
+        </script>
         
     </head>
     <body class="bg-dark text-light">
@@ -26,6 +42,19 @@
                 <h3>The king is enlisting people to help defend the evacuation. Do you have what it takes to keep them at bay while the citizens escape?</h3>
                 <hr>
                 <p> It's up to you to stop the goblins from crossing the bridge into the city!</p>
+                <label for="armor"> Select your armor:</label>
+                <form name="armorForm">
+                    <select name="armor" id="armor" onchange="showArmor()">
+                        <option value="0"></option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        <option value="4">Option 4</option>
+                    </select>
+                </form>
+                <div class="p-3">
+                    <img name="armorImage" src="assets/players/none.png" width="84" height="135">
+                </div>
                 <a href="game.html"><input type="button" value="Take Up Arms!"></a>
             </div>
             <div class="text-center">

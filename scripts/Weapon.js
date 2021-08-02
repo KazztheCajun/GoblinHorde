@@ -6,7 +6,7 @@ class Weapon extends Phaser.Physics.Arcade.Sprite
         this.depth = 1;
         this.scale = scale;
         this.hitbox = scene.add.rectangle(x, y, 60, 7);
-        this.hitbox.depth = 0;
+        this.hitbox.depth = 1;
         this.hitbox.scale = 2;
 
         scene.add.existing(this);

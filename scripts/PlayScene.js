@@ -12,24 +12,35 @@ class PlayScene extends Phaser.Scene
     preload()
     {
         this.load.path = 'assets/';
-        this.load.image('background', 'FantasyTest.png');
-        this.load.image('enemy', 'enemy.png');
-        this.load.image('hitbox', 'hitbox.png');
-        this.load.aseprite('player', 'player.png','player.json');
-        this.load.aseprite('polearm', 'polearm.png', "polearm.json");
-        this.load.aseprite('death', 'death.png', 'death.json');
-        this.load.aseprite('goblin', 'goblin.png', 'goblin.json');
-        this.load.audio('slice-effect', "slice.ogg");
-        this.load.audio('smack-effect', "smack.ogg");
-        this.load.audio('sadtown-music', "sadtown.ogg");
-        this.load.audio('gameover-effect', "gameover.ogg");
-        this.load.audio('mainbattle-music', "mainbattle.ogg");
-        this.load.audio('destroy', 'destroy.ogg');
+        this.load.image('background', '/common/FantasyTest.png');
+        //this.load.image('enemy', 'enemy.png');
+        //this.load.image('hitbox', 'hitbox.png');
+        // load player assets
+        this.load.aseprite('player1', 'players/player1.png','players/player1.json');
+        this.load.aseprite('player2', 'players/player2.png','players/player2.json');
+        this.load.aseprite('player3', 'players/player3.png','players/player3.json');
+        this.load.aseprite('player4', 'players/player4.png','players/player4.json');
+        // load weapon assets
+        this.load.aseprite('polearm', 'weapons/polearm.png', "weapons/polearm.json");
+        // load common assets
+        this.load.aseprite('death', 'common/death.png', 'common/death.json');
+        // load monster assets
+        this.load.aseprite('goblin', 'monsters/goblin.png', 'monsters/goblin.json');
+        // load audio assets
+        this.load.audio('slice-effect', "audio/slice.ogg");
+        this.load.audio('smack-effect', "audio/smack.ogg");
+        this.load.audio('sadtown-music', "audio/sadtown.ogg");
+        this.load.audio('gameover-effect', "audio/gameover.ogg");
+        this.load.audio('mainbattle-music', "audio/mainbattle.ogg");
+        this.load.audio('destroy-effect', 'audio/destroy.ogg');
     }
 
     create()
     {
-        this.anims.createFromAseprite('player');
+        this.anims.createFromAseprite('player1');
+        this.anims.createFromAseprite('player2');
+        this.anims.createFromAseprite('player3');
+        this.anims.createFromAseprite('player4');
         this.anims.createFromAseprite('polearm');
         this.anims.createFromAseprite('death');
         this.anims.createFromAseprite('goblin');
@@ -37,10 +48,8 @@ class PlayScene extends Phaser.Scene
         this.smack = this.sound.add('smack-effect');
         this.music = this.sound.add('sadtown-music');
         this.ending = this.sound.add('gameover-effect');
-        this.destroy = this.sound.add("destroy");
-        this.player = new Player(this, this.width/2, this.height/2);
-        this.player.play({key: `player-${this.player.animation}`,repeat: -1});
-        this.player.weapon.play({key: `polearm-${this.player.animation}`,repeat: -1});
+        this.destroy = this.sound.add("destroy-effect");
+        this.player = new Player(this, window.sessionStorage.getItem("playerSkin"), this.width/2, this.height/2);
         this.createMap();
         this.createObjectPool();
         this.setupPhysics();
@@ -91,7 +100,15 @@ class PlayScene extends Phaser.Scene
     setupHUD()
     {
         this.score = 0;
-        this.topScore = 20;
+        let temp = window.sessionStorage.getItem("topScore");
+        if (temp == null)
+        {
+            this.topScore = 20; 
+        }
+        else 
+        {
+            this.topScore = temp;
+        }
         this.elapsedTime = 0;
         this.score_text = document.getElementById("score-field");
         this.topScore_text = document.getElementById("top-score-field");
@@ -160,6 +177,7 @@ class PlayScene extends Phaser.Scene
         if (this.score > this.topScore)
         {
             this.topScore = this.score;
+            window.sessionStorage.setItem('topScore', this.topScore);
         }
         this.topScore_text.innerHTML = `${this.topScore}`;
         switch (this.player.lives)
