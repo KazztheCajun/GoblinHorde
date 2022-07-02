@@ -4,8 +4,8 @@ class PlayScene extends Phaser.Scene
     {
         super('play');
         this.winner = 'Top Score';
-        this.width = 1200;
-        this.height = 960;
+        this.width = 800;
+        this.height = 600;
         this.enemies = [];
     }
 
